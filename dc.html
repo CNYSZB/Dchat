@@ -209,11 +209,11 @@
         <div class="nav-links">
             <a href="#home">首页</a>
             <a href="#features">功能</a>
+            <a href="#animate">回复动画</a>
             <a href="#about">关于</a>
             <a href="#support">支持</a>
         </div>
     </nav>
-
     <!-- 首屏 -->
     <section class="hero" id="home">
         <div class="container">
@@ -222,12 +222,10 @@
             <img src="1.png" alt="D聊主界面" class="hero-img">
         </div>
     </section>
-
     <!-- 下载按钮 -->
     <div class="download-wrap">
         <a href="https://www.123912.com/s/0UFCTd-qslGd" target="_blank" class="download-btn">立即下载</a>
     </div>
-
     <!-- 核心功能 -->
     <section class="section" id="features">
         <div class="container">
@@ -251,7 +249,19 @@
             </div>
         </div>
     </section>
-
+    <!-- 回复动画专属板块（5.png+6.png分别调用） -->
+    <section class="section" id="animate">
+        <div class="container">
+            <h2 class="section-title">灵动回复动画</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <img src="5.png" alt="丝滑逐字回复">
+                    <h3>丝滑逐字淡入</h3>
+                    <p>AI回复告别僵硬整屏弹出，逐字流畅淡入展示，阅读体验更自然。</p>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- 核心优势 -->
     <section class="section" id="about">
         <div class="container">
@@ -276,12 +286,10 @@
             </div>
         </div>
     </section>
-
     <!-- 底部 -->
     <footer>
-        D聊 | 稳定更新请关注官方 Q 群629741287
+        D聊 - DeepSeek 专属版 | 稳定更新请关注官方 Q 群629741287
     </footer>
-
     <!-- 视口滚动动画脚本 -->
     <script>
         const observerOptions = {
@@ -296,7 +304,7 @@
                 }
             });
         }, observerOptions);
-        // 监听所有需要动画的元素
+        // 监听所有需要动画的元素（包含新增的回复动画板块）
         document.querySelectorAll('.hero-img, .feature-card, .advantage-item').forEach(el => {
             observer.observe(el);
         });
