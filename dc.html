@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D聊 - DeepSeek专属版</title>
+    <title>Dchat - 你的专属AI家园</title>
     <style>
         * {
             margin: 0;
@@ -210,6 +210,7 @@
             <a href="#home">首页</a>
             <a href="#features">功能</a>
             <a href="#animate">回复动画</a>
+            <a href="#check">审核</a>
             <a href="#about">关于</a>
             <a href="#support">支持</a>
         </div>
@@ -249,7 +250,7 @@
             </div>
         </div>
     </section>
-    <!-- 回复动画专属板块（5.png+6.png分别调用） -->
+    <!-- 回复动画专属板块（5.png） -->
     <section class="section" id="animate">
         <div class="container">
             <h2 class="section-title">灵动回复动画</h2>
@@ -262,6 +263,21 @@
             </div>
         </div>
     </section>
+
+    <!-- 你要新加的：审核介绍（6.png） -->
+    <section class="section" id="check">
+        <div class="container">
+            <h2 class="section-title">内容审核机制</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <img src="6.png" alt="内容审核">
+                    <h3>Qwen2.5-7B-Instruct 精准审核</h3>
+                    <p>内容审核由 Qwen2.5-7B-Instruct 模型驱动，识别快、判断准、拦截有效，安全又流畅。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 核心优势 -->
     <section class="section" id="about">
         <div class="container">
@@ -304,7 +320,6 @@
                 }
             });
         }, observerOptions);
-        // 监听所有需要动画的元素（包含新增的回复动画板块）
         document.querySelectorAll('.hero-img, .feature-card, .advantage-item').forEach(el => {
             observer.observe(el);
         });
