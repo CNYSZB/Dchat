@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cnyszb.github.io/Dchat/dc.html
