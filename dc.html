@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=2.0">
-  <title>D聊 · 沉浸式AI对话</title>
+  <title>Dchat · 沉浸式AI对话</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * {
       margin: 0;
@@ -174,6 +175,27 @@
       transform: translateY(-3px);
     }
 
+    .web-btn {
+      padding: 16px 38px;
+      color: #e8e8ed;
+      font-size: 17px;
+      text-decoration: none;
+      border: 1.5px solid rgba(255, 255, 255, 0.15);
+      transition: all 0.35s ease;
+      backdrop-filter: blur(12px);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.02);
+      cursor: pointer;
+    }
+
+    .web-btn:hover {
+      border-color: #3E9AE2;
+      background: rgba(62, 154, 226, 0.1);
+      transform: translateY(-2px);
+    }
+
     .qq-btn {
       padding: 16px 38px;
       color: #e8e8ed;
@@ -198,6 +220,37 @@
     .group-hint {
       color: #6b6b72;
       font-size: 14px;
+    }
+
+    .platform-support {
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: #6b6b72;
+      font-size: 13px;
+    }
+
+    .platform-label {
+      opacity: 0.65;
+      font-weight: 500;
+    }
+
+    .platform-icons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .platform-icon {
+      font-size: 18px;
+      opacity: 0.45;
+      transition: opacity 0.3s ease;
+      cursor: default;
+    }
+
+    .platform-icon:hover {
+      opacity: 0.8;
     }
 
     /* ========== 区块标题 ========== */
@@ -232,7 +285,7 @@
       margin: 60px 0;
     }
 
-    /* ========== 智能体创建UI - 应用真实样式平铺 ========== */
+    /* ========== 智能体创建UI ========== */
     .agent-form-flow {
       max-width: 420px;
       margin: 0 auto;
@@ -399,7 +452,6 @@
       filter: grayscale(0.2);
     }
 
-    /* 渐变淡化 */
     .fade-edge {
       position: relative;
     }
@@ -428,7 +480,7 @@
       pointer-events: none;
     }
 
-    /* ========== 对话气泡 - 应用核心风格，圆角，直接平铺 ========== */
+    /* ========== 对话气泡 ========== */
     .chat-flow {
       max-width: 520px;
       margin: 0 auto;
@@ -460,7 +512,6 @@
       border-radius: 24px 24px 24px 8px;
     }
 
-    /* 逐字动画 */
     .typewriter-text span {
       opacity: 0;
       animation: fadeInChar 0.06s ease forwards;
@@ -471,7 +522,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* 触发器按钮 */
     .trigger-btn {
       padding: 10px 24px;
       background: #1a3a5c;
@@ -490,7 +540,6 @@
       background: #1e4a6e;
     }
 
-    /* ========== 底部 ========== */
     .footer-area {
       padding: 48px 20px;
       text-align: center;
@@ -499,7 +548,6 @@
       border-top: 1px solid rgba(255,255,255,0.03);
     }
 
-    /* 响应式 */
     @media (max-width: 768px) {
       nav {
         padding: 16px 20px;
@@ -519,12 +567,14 @@
       .agent-form-flow {
         padding: 0 20px;
       }
+      .platform-support {
+        flex-wrap: wrap;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- 导航栏 -->
   <nav>
     <div class="logo">D聊</div>
     <div class="nav-links">
@@ -536,7 +586,6 @@
     </div>
   </nav>
 
-  <!-- ========== 首屏 ========== -->
   <div class="hero-area" id="home">
     <div class="hero-inner">
       <h1>对话，本该如此沉浸</h1>
@@ -544,24 +593,34 @@
     </div>
   </div>
 
-  <!-- 下载区域 - 独立锚点，确保滚动后完全可见 -->
   <div class="download-section" id="download-section">
     <div class="action-group">
       <a href="Dchat_1.7.apk" class="download-btn" download="Dchat_1.7.apk">
-        ⬇ 下载 Android 版本
+        <i class="fa-brands fa-android" style="margin-right: 8px;"></i>下载 Android 版本
+      </a>
+      <a href="https://cnyszb.github.io/dht/dc.html" class="web-btn" target="_blank">
+        <i class="fa-solid fa-desktop" style="margin-right: 8px;"></i>网页端入口
       </a>
       <a href="#" class="qq-btn" id="qqGroupBtn">
-        💬 加入官方社群
+        <i class="fa-brands fa-qq" style="margin-right: 8px;"></i>加入官方社群
       </a>
     </div>
     <div class="group-hint">
       官方Q群：629741287 · 获取最新版本与帮助
     </div>
+    <div class="platform-support">
+      <span class="platform-label">支持系统</span>
+      <span class="platform-icons">
+        <i class="fa-brands fa-android platform-icon" title="Android"></i>
+        <i class="fa-brands fa-windows platform-icon" title="Windows"></i>
+        <i class="fa-brands fa-apple platform-icon" title="macOS"></i>
+        <i class="fa-brands fa-linux platform-icon" title="Linux"></i>
+      </span>
+    </div>
   </div>
 
   <div class="section-divider"></div>
 
-  <!-- ========== 创建智能体 ========== -->
   <div class="section-spacer" id="create-agent"></div>
   <div class="block-title">创建你的专属智能体</div>
 
@@ -589,13 +648,12 @@
       <div class="select-trigger">情感陪伴</div>
     </div>
 
-    <!-- 性别 - 可交互 -->
-    <div style="position: relative; z-index: 5;">
+    <div style="position: relative; z-index: 10;">
       <div class="form-label" style="color: #3E9AE2;">AI性别 ✦ 可交互</div>
       <div class="select-trigger" id="genderSelectBtn" onclick="toggleGenderDropdown()">
         <span id="genderSelectText">中性</span>
       </div>
-      <div class="select-dropdown" id="genderDropdown">
+      <div class="select-dropdown" id="genderDropdown" style="position: relative; z-index: 20;">
         <div class="select-item" onclick="selectGender('male')">男性</div>
         <div class="select-item" onclick="selectGender('female')">女性</div>
         <div class="select-item selected" onclick="selectGender('neutral')">中性</div>
@@ -621,7 +679,6 @@
 
   <div class="section-divider"></div>
 
-  <!-- ========== 回复动画 ========== -->
   <div class="section-spacer" id="animate"></div>
   <div class="block-title">灵动逐字回复</div>
 
@@ -641,7 +698,6 @@
 
   <div class="section-divider"></div>
 
-  <!-- ========== 对话预览 ========== -->
   <div class="section-spacer" id="chat-preview"></div>
   <div class="block-title">沉浸式对话体验</div>
 
@@ -658,16 +714,14 @@
     DeepSeek驱动，回复自然流畅
   </div>
 
-  <!-- ========== 底部 ========== -->
-<div class="footer-area">
+  <div class="footer-area">
     Dchat ·  | 持续更新请关注官方Q群 629741287<br>
     <span style="opacity:0.5;">© 这里空着太可惜了，我往这里塞点东西</span>
     <br><br>
     <img src="heihei.png" alt="D聊" style="max-width: 200px; width: 100%; height: auto; opacity: 0.6; margin-top: 8px;" loading="lazy">
-</div>
+  </div>
 
   <script>
-    // ========== 性别选择交互 ==========
     function toggleGenderDropdown() {
       document.getElementById('genderDropdown').classList.toggle('open');
     }
@@ -694,7 +748,6 @@
       }
     });
 
-    // ========== 逐字动画 ==========
     function playTypewriter() {
       const element = document.getElementById('typewriterContent');
       const messages = [
@@ -713,7 +766,6 @@
       });
     }
 
-    // ========== QQ群按钮 ==========
     document.getElementById('qqGroupBtn').addEventListener('click', function(e) {
       e.preventDefault();
       const groupNumber = '629741287';
@@ -735,12 +787,10 @@
       }
     });
 
-    // ========== 下载按钮 ==========
     document.querySelector('.download-btn').addEventListener('click', () => {
       console.log('开始下载 Dchat_1.7.apk');
     });
 
-    // ========== 平滑滚动（增强偏移量） ==========
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -756,7 +806,6 @@
       });
     });
 
-    // 初始化逐字动画
     window.addEventListener('DOMContentLoaded', () => {
       setTimeout(playTypewriter, 500);
     });
