@@ -20,6 +20,8 @@
       --bubble-user: #1a4a6e;
       --bubble-ai: #1e2026;
       --border-light: rgba(255, 255, 255, 0.08);
+      --surface-light: #1a1c22;
+      --border: #2a2c33;
       --font-stack: "SF Pro SC", "SF Pro Text", "PingFang SC", "Helvetica Neue", system-ui, -apple-system, sans-serif;
     }
 
@@ -153,6 +155,7 @@
       letter-spacing: 0.3px;
       border: none;
       cursor: pointer;
+      border-radius: 30px;
     }
 
     .download-btn::after {
@@ -188,6 +191,7 @@
       justify-content: center;
       background: rgba(255, 255, 255, 0.02);
       cursor: pointer;
+      border-radius: 30px;
     }
 
     .web-btn:hover {
@@ -209,6 +213,7 @@
       justify-content: center;
       background: rgba(255, 255, 255, 0.02);
       cursor: pointer;
+      border-radius: 30px;
     }
 
     .qq-btn:hover {
@@ -285,7 +290,57 @@
       margin: 60px 0;
     }
 
-    /* ========== 智能体创建UI ========== */
+    /* ========== 编年史 ========== */
+    .chronicle-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .chronicle-era {
+      padding: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.015);
+      border-radius: 16px;
+    }
+
+    .chronicle-era h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #3E9AE2;
+      margin-bottom: 12px;
+    }
+
+    .chronicle-era ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .chronicle-era ul li {
+      font-size: 14px;
+      color: #a0a0b0;
+      padding: 4px 0;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .chronicle-era ul li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: #3E9AE2;
+      font-weight: 700;
+    }
+
+    .chronicle-highlight {
+      color: #ff6b4a;
+      font-weight: 500;
+    }
+
+    /* ========== 智能体创建UI（同步应用内样式） ========== */
     .agent-form-flow {
       max-width: 420px;
       margin: 0 auto;
@@ -308,8 +363,8 @@
     .form-input {
       width: 100%;
       padding: 12px 14px;
-      background: #14161a;
-      border: 1px solid #2a2c33;
+      background: var(--surface-light);
+      border: 1px solid var(--border);
       color: #fff;
       font-size: 15px;
       font-family: var(--font-stack);
@@ -321,8 +376,8 @@
       width: 100%;
       min-height: 80px;
       padding: 12px 14px;
-      background: #14161a;
-      border: 1px solid #2a2c33;
+      background: var(--surface-light);
+      border: 1px solid var(--border);
       color: #fff;
       font-size: 15px;
       font-family: var(--font-stack);
@@ -341,20 +396,20 @@
     .avatar-circle {
       width: 60px;
       height: 60px;
-      border: 2px solid #2a2c33;
+      border: 2px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 24px;
-      background: #1a1c22;
+      background: var(--surface-light);
       border-radius: 50%;
     }
 
     .avatar-action {
       flex: 1;
       padding: 12px 16px;
-      background: #1a1c22;
-      border: 1px solid #2a2c33;
+      background: var(--surface-light);
+      border: 1px solid var(--border);
       color: #f0f0f5;
       font-size: 15px;
       cursor: pointer;
@@ -363,11 +418,12 @@
       border-radius: 20px;
     }
 
-    .select-trigger {
+    .select-btn {
       width: 100%;
       padding: 14px 16px;
-      background: #1a1c22;
-      border: 1px solid #2a2c33;
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      border-radius: 20px;
       color: #fff;
       font-size: 15px;
       text-align: left;
@@ -375,47 +431,55 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
+      z-index: 1;
       font-family: var(--font-stack);
-      border-radius: 20px;
     }
 
-    .select-trigger::after {
-      content: '▾';
+    .select-btn::after {
+      content: '▼';
       font-size: 12px;
       color: var(--subtext);
     }
 
-    .select-dropdown {
-      background: #1a1c22;
-      border: 1px solid #2a2c33;
-      border-top: none;
+    .inline-select-options {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: #14161a;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      margin-top: 4px;
+      z-index: 100;
       overflow: hidden;
       display: none;
-      border-radius: 0 0 20px 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     }
 
-    .select-dropdown.open {
+    .inline-select-options.show {
       display: block;
     }
 
-    .select-item {
+    .inline-select-option {
       padding: 14px 16px;
-      text-align: center;
       font-size: 15px;
       cursor: pointer;
-      transition: background 0.15s ease;
-      border-bottom: 1px solid #2a2c33;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+      transition: background 0.1s ease;
+      text-align: center;
     }
 
-    .select-item:last-child {
+    .inline-select-option:last-child {
       border-bottom: none;
     }
 
-    .select-item:hover {
+    .inline-select-option:hover {
       background: #1a3a5c;
     }
 
-    .select-item.selected {
+    .inline-select-option.selected {
       background: #1a3a5c;
       color: #fff;
     }
@@ -429,11 +493,11 @@
     .form-btn {
       flex: 1;
       padding: 12px;
-      border: 1px solid #2a2c33;
+      border: 1px solid var(--border);
       cursor: pointer;
       font-size: 15px;
       font-weight: 500;
-      background: #1a1c22;
+      background: var(--surface-light);
       color: #f0f0f5;
       text-align: center;
       font-family: var(--font-stack);
@@ -480,14 +544,14 @@
       pointer-events: none;
     }
 
-    /* ========== 对话气泡 ========== */
+    /* ========== 对话气泡（同步应用内样式） ========== */
     .chat-flow {
       max-width: 520px;
       margin: 0 auto;
       padding: 0 20px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 16px;
     }
 
     .chat-bubble {
@@ -495,7 +559,7 @@
       padding: 14px 18px;
       font-size: 15px;
       line-height: 1.5;
-      border: 1px solid #2a2c33;
+      border: 1px solid var(--border);
     }
 
     .chat-bubble.user {
@@ -576,12 +640,13 @@
 <body>
 
   <nav>
-    <div class="logo">D聊</div>
+    <div class="logo">Dchat</div>
     <div class="nav-links">
       <a href="#home">首页</a>
       <a href="#create-agent">创建智能体</a>
       <a href="#animate">回复动画</a>
       <a href="#chat-preview">对话预览</a>
+      <a href="#chronicle">编年史</a>
       <a href="#download-section">下载</a>
     </div>
   </nav>
@@ -595,7 +660,7 @@
 
   <div class="download-section" id="download-section">
     <div class="action-group">
-      <a href="Dchat_1.7.apk" class="download-btn" download="Dchat_1.7.apk">
+      <a href="Dchat_2.5.0.apk" class="download-btn" download="Dchat_2.5.0.apk">
         <i class="fa-brands fa-android" style="margin-right: 8px;"></i>下载 Android 版本
       </a>
       <a href="https://cnyszb.github.io/dht/dc.html" class="web-btn" target="_blank">
@@ -606,7 +671,7 @@
       </a>
     </div>
     <div class="group-hint">
-      官方Q群：629741287 · 获取最新版本与帮助
+      官方Q群：629741287 · 反馈与建议：dchatstudio@outlook.com
     </div>
     <div class="platform-support">
       <span class="platform-label">支持系统</span>
@@ -643,20 +708,26 @@
       <input class="form-input" type="text" value="一个善解人意的聊天伙伴" readonly>
     </div>
 
-    <div class="disabled-zone">
-      <div class="form-label">AI类型</div>
-      <div class="select-trigger">情感陪伴</div>
+    <div style="position: relative; z-index: 10;">
+      <div class="form-label" style="color: #3E9AE2;">AI类型 ✦ 可交互</div>
+      <div class="select-btn" id="aiTypeSelectBtn" onclick="toggleSelect('aiTypeDropdown')">
+        <span id="aiTypeText">情感陪伴</span>
+      </div>
+      <div class="inline-select-options" id="aiTypeDropdown">
+        <div class="inline-select-option selected" onclick="selectOption('aiType', '情感陪伴', this)">情感陪伴</div>
+        <div class="inline-select-option" onclick="selectOption('aiType', '工具', this)">工具</div>
+      </div>
     </div>
 
-    <div style="position: relative; z-index: 10;">
+    <div style="position: relative; z-index: 9;">
       <div class="form-label" style="color: #3E9AE2;">AI性别 ✦ 可交互</div>
-      <div class="select-trigger" id="genderSelectBtn" onclick="toggleGenderDropdown()">
-        <span id="genderSelectText">中性</span>
+      <div class="select-btn" id="aiGenderSelectBtn" onclick="toggleSelect('aiGenderDropdown')">
+        <span id="aiGenderText">中性</span>
       </div>
-      <div class="select-dropdown" id="genderDropdown" style="position: relative; z-index: 20;">
-        <div class="select-item" onclick="selectGender('male')">男性</div>
-        <div class="select-item" onclick="selectGender('female')">女性</div>
-        <div class="select-item selected" onclick="selectGender('neutral')">中性</div>
+      <div class="inline-select-options" id="aiGenderDropdown">
+        <div class="inline-select-option" onclick="selectOption('aiGender', '男性', this)">男性</div>
+        <div class="inline-select-option" onclick="selectOption('aiGender', '女性', this)">女性</div>
+        <div class="inline-select-option selected" onclick="selectOption('aiGender', '中性', this)">中性</div>
       </div>
     </div>
 
@@ -714,37 +785,117 @@
     DeepSeek驱动，回复自然流畅
   </div>
 
+  <div class="section-divider"></div>
+
+  <div class="section-spacer" id="chronicle"></div>
+  <div class="block-title">编年史</div>
+
+  <div class="chronicle-wrap">
+    <div class="chronicle-era">
+      <h3>A聊 时期</h3>
+      <ul>
+        <li><span class="chronicle-highlight">A聊</span>上线，DChat的前身，智谱GLM-4-Flash，豆包写代码</li>
+        <li>确立了密码登录、视频教程、长按配置详情、身份验证等基础功能</li>
+        <li>节点从1个扩到5个，全是创作者自己的API，为后来的分流系统打下基础</li>
+      </ul>
+    </div>
+
+    <div class="chronicle-era">
+      <h3>DChat 1.x.x 早期</h3>
+      <ul>
+        <li><span class="chronicle-highlight">DChat 1.0.0</span>上线，换硅基流动，调用DeepSeek-R1-Distill-Qwen-7B</li>
+        <li>继承A聊全部功能，豆包继续写代码</li>
+        <li>我是主动换成8B模型，因为当时以为更强大</li>
+      </ul>
+    </div>
+
+    <div class="chronicle-era">
+      <h3>DChat 1.x.x 中期</h3>
+      <ul>
+        <li>DeepSeek接入写代码，逐渐全面交给DeepSeek</li>
+        <li>分流系统从A聊移植、智能体系统上线、白名单机制</li>
+      </ul>
+    </div>
+
+    <div class="chronicle-era">
+      <h3>DChat 1.x.x 晚期</h3>
+      <ul>
+        <li>创造者模式上线（当时暂未公开此功能）</li>
+        <li>软件名从"D聊"改为"Dchat"，更换图标</li>
+        <li>版本号记录丢失的问题时期结束</li>
+      </ul>
+    </div>
+
+    <div class="chronicle-era">
+      <h3>DChat 2.0.0</h3>
+      <ul>
+        <li><span class="chronicle-highlight">删除登录系统</span>，从封闭变开放</li>
+      </ul>
+    </div>
+
+    <div class="chronicle-era">
+      <h3>DChat 2.1.0 ~ 2.3.9</h3>
+      <ul>
+        <li>帮助问号引导、回车发送开关、电脑端快捷键指南</li>
+        <li>打断AI功能、括号按钮、语言切换内置弹窗</li>
+        <li>分流系统正式启用、官方社媒、背景自定义</li>
+      </ul>
+    </div>
+
+    <div class="chronicle-era">
+      <h3>DChat 2.4.0</h3>
+      <ul>
+        <li>修复性别/类型bug</li>
+      </ul>
+    </div>
+
+    <div class="chronicle-era">
+      <h3>DChat 2.5.0</h3>
+      <ul>
+        <li>自定义模型选择、最大使用token可调节</li>
+        <li>代码块检测与一键复制</li>
+        <li>删除多语言，只保留简体中文</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="block-subtitle">
+    从A聊到Dchat，从群友互助(其实没人帮我)到独立生态
+  </div>
+
   <div class="footer-area">
-    Dchat ·  | 持续更新请关注官方Q群 629741287<br>
+    Dchat · 持续更新请关注官方Q群 629741287<br>
     <span style="opacity:0.5;">© 这里空着太可惜了，我往这里塞点东西</span>
-    <br><br>
-    <img src="heihei.png" alt="D聊" style="max-width: 200px; width: 100%; height: auto; opacity: 0.6; margin-top: 8px;" loading="lazy">
   </div>
 
   <script>
-    function toggleGenderDropdown() {
-      document.getElementById('genderDropdown').classList.toggle('open');
+    function toggleSelect(dropdownId) {
+      const dropdown = document.getElementById(dropdownId);
+      const isOpen = dropdown.classList.contains('show');
+      // 关闭所有下拉
+      document.querySelectorAll('.inline-select-options.show').forEach(el => el.classList.remove('show'));
+      if (!isOpen) {
+        dropdown.classList.add('show');
+      }
     }
 
-    function selectGender(gender) {
-      const genderMap = {
-        'male': '男性',
-        'female': '女性',
-        'neutral': '中性'
-      };
-      document.getElementById('genderSelectText').textContent = genderMap[gender];
-      document.querySelectorAll('#genderDropdown .select-item').forEach(item => {
-        item.classList.remove('selected');
-      });
-      event.target.classList.add('selected');
-      document.getElementById('genderDropdown').classList.remove('open');
+    function selectOption(type, value, el) {
+      if (type === 'aiType') {
+        document.getElementById('aiTypeText').textContent = value;
+        document.querySelectorAll('#aiTypeDropdown .inline-select-option').forEach(o => o.classList.remove('selected'));
+        el.classList.add('selected');
+        document.getElementById('aiTypeDropdown').classList.remove('show');
+      } else if (type === 'aiGender') {
+        document.getElementById('aiGenderText').textContent = value;
+        document.querySelectorAll('#aiGenderDropdown .inline-select-option').forEach(o => o.classList.remove('selected'));
+        el.classList.add('selected');
+        document.getElementById('aiGenderDropdown').classList.remove('show');
+      }
     }
 
     document.addEventListener('click', function(e) {
-      const btn = document.getElementById('genderSelectBtn');
-      const dropdown = document.getElementById('genderDropdown');
-      if (btn && dropdown && !btn.contains(e.target) && !dropdown.contains(e.target)) {
-        dropdown.classList.remove('open');
+      if (!e.target.closest('.select-btn')) {
+        document.querySelectorAll('.inline-select-options.show').forEach(el => el.classList.remove('show'));
       }
     });
 
@@ -785,10 +936,6 @@
           prompt('请手动复制群号加入：', groupNumber);
         });
       }
-    });
-
-    document.querySelector('.download-btn').addEventListener('click', () => {
-      console.log('开始下载 Dchat_1.7.apk');
     });
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
